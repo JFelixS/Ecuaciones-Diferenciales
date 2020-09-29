@@ -1,0 +1,332 @@
+
+
+
+
+\documentclass[12pt,openany]{scrbook}
+
+% Users of the {thebibliography} environment or BibTeX should use the
+% scicite.sty package, downloadable from *Science* at
+% www.sciencemag.org/about/authors/prep/TeX_help/ .
+% This package should properly format in-text
+% reference calls and reference-list numbers.
+
+%\usepackage{scicite}
+
+
+\usepackage[utf8]{inputenc}
+
+
+\usepackage{amsmath}
+\usepackage{parskip} %sirve para quitar la sangria de los parrafos.
+\usepackage{mathrsfs} %sirve para los tipos de letras, por ejemplo en el Lagrangiano L.
+\usepackage{graphicx}
+\usepackage{wrapfig} %sirve para agregar imagenes en el escrito
+\usepackage{caption}
+\usepackage{subcaption}
+%\usepackage{siunitx}
+
+\usepackage{amssymb}
+
+
+
+\newcommand{\dbar}{d\hspace*{-0.08em}\bar{}\hspace*{0.1em}}
+
+
+
+%\newtheorem{lemma}{Lema}
+\newtheorem{lemma}{Lemma}
+\newtheorem{Theorem}{Theorem}
+%\newtheorem{Proposition}{Proposici\'on}
+\newtheorem{proposition}{Proposition}
+\newtheorem{comment}{Comment}
+
+\newcommand{\qedsymbol}{$\blacksquare$}
+
+\newtheorem{definition}{Definition}
+%\newtheorem{mydef}{Definici\'on}
+
+\usepackage{ifpdf}
+\ifpdf
+	\DeclareGraphicsExtensions{pdf,png,jpg}
+\else
+	\DeclareGraphicsExtensions{.eps}
+\fi
+
+\usepackage{anysize}
+\marginsize{3cm}{2.8cm}{2.8cm}{2.5cm} % {izquierda}{derecha}{arriba}{abajo}. %para cambiar los margenes
+
+
+
+% Use times if you have the font installed; otherwise, comment out the
+% following line.
+
+%\usepackage{times}
+
+% The preamble here sets up a lot of new/revised commands and
+% environments.  It's annoying, but please do *not* try to strip these
+% out into a separate .sty file (which could lead to the loss of some
+% information when we convert the file to other formats).  Instead, keep
+% them in the preamble of your main LaTeX source file.
+
+
+% The following parameters seem to provide a reasonable page setup.
+
+%\topmargin 0.0cm
+%\oddsidemargin 0.2cm
+%\textwidth 16cm 
+%\textheight 21cm
+%\footskip 0.5cm
+
+
+%The next command sets up an environment for the abstract to your paper.
+
+\newenvironment{sciabstract}{%
+\begin{quote} \bf}
+{\end{quote}}
+
+
+% If your reference list includes text notes as well as references,
+% include the following line; otherwise, comment it out.
+
+%\renewcommand\refname{References and Notes}
+
+% The following lines set up an environment for the last note in the
+% reference list, which commonly includes acknowledgments of funding,
+% help, etc.  It's intended for users of BibTeX or the {thebibliography}
+% environment.  Users who are hand-coding their references at the end
+% using a list environment such as {enumerate} can simply add another
+% item at the end, and it will be numbered automatically.
+
+%\newcounter{lastnote}
+%\newenvironment{scilastnote}{%
+%\setcounter{lastnote}{\value{enumiv}}%
+%\addtocounter{lastnote}{+1}%
+%\begin{list}%
+%{\arabic{lastnote}.}
+%{\setlength{\leftmargin}{.22in}}
+%{\setlength{\labelsep}{.5em}}}
+%{\end{list}}
+
+
+% Include your paper's title here
+
+\title{Notas de Python3} 
+
+
+% Place the author information here.  Please hand-code the contact
+% information and notecalls; do *not* use \footnote commands.  Let the
+% author contact information appear immediately below the author names
+% as shown.  We would also prefer that you don't change the type-size
+% settings shown here.
+
+\author
+{Jos\'e F\'elix Salazar\footnote{jose.salazar@umich.mx}
+\\
+\normalsize{%$^{1}$
+Instituto de F\'isica y Matem\'aticas, Universidad Michoacana de San Nicol\'as de Hidalgo}\\
+\normalsize{Edificio C-3 , Ciudad Universitaria, 58040 Morelia, Michoac\'an, M\'exico.}\\
+%\normalsize{$^{2}$Another Unknown Address, Palookaville, ST 99999, USA}\\
+\\
+%\normalsize{$^\ast$To whom correspondence should be addressed; E-mail:  jsmith@wherever.edu.}
+}
+
+
+ % Include the date command, but leave its argument blank. Sirve para actualizar la fecha.
+
+%%%%%%%%%%%%%%%%% END OF PREAMBLE %%%%%%%%%%%%%%%%
+
+
+\begin{document} 
+
+\maketitle
+
+\section{Comandos B\'asicos para Nevegar por la Terminal}
+
+\begin{itemize}
+
+\item[•] cd (change directory): Movernos entre distintos directorios\\
+
+\hspace{1cm}	\textbf{cd} directorio
+
+\hspace{1cm}	:$\thicksim$\vspace{0cm}$\$$ \textbf{cd} lpthw/	
+
+para ir un directorio atr\'as hay que usar punto punto .. 
+
+\hspace{1cm}	 cd ..
+
+\item[•] ls (list): Lista todos los archivos del directorio. Algunas variaciones son:
+
+\hspace{1cm} ls -a -- Presenta el contenido incluyendo archivos ocultos (que empiezan con .) 
+
+\hspace{1cm} ls -l -- Muestra el contenido en forma detallada
+
+\hspace{1cm} ls -lh -- Lo mismo que el anterior solo que muestra el tama\~no de cada archivo en
+unidades legibles
+
+\hspace{1cm}	:$\thicksim$\vspace{0cm}$\$$ ls
+
+\hspace{1cm}	:$\thicksim$\vspace{0cm}$\$$ ls -a
+
+
+\item[•] pwd (print working directory): Nos indica el directorio en el que nos encontramos
+parados
+
+\hspace{1cm}	$\$$ pwd \\
+
+\item[•] mv (move): Mover archivos entre distintos directorios, al mover un archivo del directorio \textit{dir1} al directorio \textit{dir2} este desaparecer\'a del primer directorio
+
+\hspace{1cm}	$\$$ mv directorio\_origen directorio\_destino
+
+\item[•] cp (copy): copia un archivo de un directorio a otro y a diferencia del mv no borra el
+archivo original
+
+\hspace{1cm} $\$$ cp directorio\_origen directorio\_destino 
+
+\item[•] mkdir (make directory): Crea un directorio
+
+\hspace{1cm} $\$$ mkdir nombre\_directorio
+
+
+\end{itemize}	
+
+
+\subsection{Abrir Archivos desde Terminal}
+Para abrir un archivo desde la terminal, primero nos
+dirigimos a la carpeta donde esta el archivo y despu\'es
+usamos el comando \textbf{xdg-open}:
+
+\hspace{1cm} $\$$ xdg-open lp3.pdf
+
+\'o si no estas en la carpeta que contiene al archivo, 
+solo debes escribir la ruta que lo contiene, 
+
+\hspace{1cm} $\$$ xdg-open $\thicksim$/home/felix/lpthw/lp3.pdf
+
+
+
+
+
+
+
+\section{Sentencia if}
+
+En la terminal (interprete)
+
+felix@PhD-HP-240-G6-Notebook-PC:$\thicksim$\vspace{0cm}$\$$   python3 \\
+$>>>$ a $= 10$ \\
+$>>>$ if a $>= 10$: \\
+$...$ \qquad \quad print('True') \\
+$...$ else: \\
+$...$  \qquad \quad print('False') \\
+$...$ \\
+True
+
+
+$>>>$ b $= 5$ \\
+$>>>$ if b $> 2$: \\
+$...$ \qquad \quad print('True') \\
+$...$ 
+True
+
+
+
+\section{M\'etodos}
+
+
+\subsection{Python 3 - List append() Method}
+
+Descripci\'on:\\
+El m\'etodo append() agrega un obj pasado a la lista existente.
+
+Sintaxis:\\
+list.append(obj)
+
+Par\'ametros:\\
+\textbf{obj} -- Este es el objeto que se agregar\'a a la lista.
+
+Valor devuelto\\
+Este m\'etodo no devuelve ning\'un valor pero actualiza la lista existente.
+
+Example:
+(En terminal)
+
+felix@PhD-HP-240-G6-Notebook-PC:$\thicksim$\vspace{0cm}$\$$   python3 \\
+$>>>$ lista $= [1,2,3,1,1,2,1]$\\
+$>>>$ lista.append(4)\\
+$>>>$ lista\\
+$[1, 2, 3, 1, 1, 2, 1, 4]$
+
+
+\subsection{Python 3 - List insert() Method}
+
+Descripci\'on:\\
+El m\'etodo insert() inserta el objeto obj en la lista en el \'indice de desplazamiento.
+
+Sintaxis:\\
+list.insert(index, obj)
+
+Par\'ametros:\\
+	\textbf{index} -- Este es el \'indice donde se debe insertar el objeto obj.\\
+	\textbf{obj} -- este es el objeto que se insertará en la lista dada.
+
+Valor devuelto:\\
+Este método no devuelve ningún valor pero inserta el elemento dado en el \'indice dado.
+
+Ejemplo:
+(En terminal)
+
+felix@PhD-HP-240-G6-Notebook-PC:$\thicksim$\vspace{0cm}$\$$   python3 \\
+$>>>$ lista = [1,2,3,1,1,2,1]\\
+$>>>$ lista.insert(0,0)\\
+$>>>$ lista \\
+$[0, 1, 2, 3, 1, 1, 2, 1, 4]$ \\
+$>>>$ lista.insert(0,-1)\\
+$>>>$ lista \\
+$[-1, 0, 1, 2, 3, 1, 1, 2, 1, 4]$
+
+
+
+
+\subsection{Python3 - List count() Method}
+Descripci\'on:\\
+El m\'etodo count() devuelve el n\'umero de apariciones de subcadena en el rango [inicio, fin].
+
+Sintaxis:\\
+list.count(obj)
+
+Par\'ametros:\\
+\textbf{obj} -- Este es el objeto que ser\'a contado en la
+lista.
+
+Ejemplo:
+(En terminal)\\
+
+felix@PhD-HP-240-G6-Notebook-PC:$\thicksim$\vspace{0cm}$\$$   python3 \\
+$>>>$ lista = [1,2,3,1,1,2,1]\\
+$>>>$ lista.count(1)\\
+$4$
+\\
+
+$>>>$ lista = [1,2,3,1,1,2,1]\\
+$>>>$ lista.count(2)\\
+$2$
+
+
+\section{Ambiente Virtual venv}
+
+\subsection{Activar el Ambiente Virtual}
+
+Para activar el ambiente virtual (venv) desde la terminal, 
+desde cualquier repositorio en que nos encontremos, debemos
+de ejecutar lo siguiente:
+
+\hspace{1cm} $ \$ $ source $\backsim$/home/felix/lpthw/py3/bin/activate
+
+en donde py3 es el nombre de nuestro ambiente virtual. En caso de estar
+en el repositorio donde esta nuestro ambiente virtual, solo escribimos
+
+\hspace{1cm} $ \$ $ source py3/bin/activate
+
+
+
+\end{document}
